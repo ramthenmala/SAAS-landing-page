@@ -9,7 +9,7 @@ A sleek and modern landing page built using **Tailwind CSS**, **Framer Motion**,
 - **React** for a dynamic, component-based architecture
 
 ### Live Demo
-[Link to live demo]
+[[Link to live demo]](https://saas-landing-page-opal.vercel.app/)
 
 ### Installation
 Clone the repository and run the following commands:
