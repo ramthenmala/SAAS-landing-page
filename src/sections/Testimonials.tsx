@@ -7,6 +7,8 @@ import avatar6 from "@/assets/avatar-6.png";
 import avatar7 from "@/assets/avatar-7.png";
 import avatar8 from "@/assets/avatar-8.png";
 import avatar9 from "@/assets/avatar-9.png";
+import Image from "next/image";
+import { twMerge } from "tailwind-merge";
 
 const testimonials = [
   {
@@ -65,6 +67,60 @@ const testimonials = [
   },
 ];
 
+
 export const Testimonials = () => {
-  return null;
+
+  const firstTestimonialCol = testimonials.slice(0, 3);
+  const secTestimonialCol = testimonials.slice(4, 6);
+  const thirdTestimonialCol = testimonials.slice(7, 9);
+
+  const TestimonialColumn = (props: { testimonial: typeof testimonials, className?: string }) => {
+    const { testimonial, className } = props;
+    return (
+      <div className={twMerge(
+        "flex flex-col gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]",
+        props.className
+      )}>
+        {testimonial.map((testimonial, i) => (
+          <div className="card" key={i}>
+            <div className="">{testimonial.text}</div>
+            <div className="flex items-center gap-2 mt-5">
+              <Image
+                src={testimonial.imageSrc}
+                alt={testimonial.name}
+                className="h-10 w-10 rounded-full"
+                width={40}
+                height={40}
+              />
+
+              <div className="flex flex-col gap-1">
+                <div className="font-medium tracking-tight leading-5">{testimonial.name}</div>
+                <div className="tracking-tight leading-5 text-gray-500">{testimonial.username}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  return (
+    <section className="bg-white">
+      <div className="container">
+        <div className='max-w-[540px] mx-auto'>
+          <div className='flex justify-center'>
+            <div className="tag">Testimonials</div>
+          </div>
+          <h2 className="section-title">What our users says</h2>
+          <p className="section-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur temporibus, </p>
+        </div>
+
+        <div className="flex justify-center gap-6">
+          <TestimonialColumn testimonial={firstTestimonialCol} />
+          <TestimonialColumn testimonial={secTestimonialCol} className="hidden md:flex" />
+          <TestimonialColumn testimonial={thirdTestimonialCol} className="hidden lg:flex" />
+        </div>
+      </div>
+    </section>
+  );
 };

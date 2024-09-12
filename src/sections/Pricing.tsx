@@ -56,7 +56,7 @@ const pricingTiers = [
 
 export const Pricing = () => {
   return (
-    <section className="py-24">
+    <section className="py-24 bg-white">
       <div className="container">
         <div className='max-w-[540px] mx-auto'>
           <h2 className="section-title">Pricing</h2>
@@ -66,7 +66,7 @@ export const Pricing = () => {
         <div className='flex flex-col gap-6 items-center mt-10 lg:flex-row lg:items-end lg:justify-center'>
           {pricingTiers.map((item) => (
             <div key={item.title} className={twMerge(
-              'p-10 border border-black rounded-3xl shadow-[0_7px_14px_#EAEAEA] max-w-xs w-full',
+              'card',
               item.inverse === true && ' bg-black text-white'
             )}>
               <div className='flex justify-between'>
